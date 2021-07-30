@@ -5,10 +5,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.example.demo.models.Product;
-import com.example.demo.models.User;
-import com.example.demo.repository.ProductRepository;
-import com.example.demo.repository.UserRepository;
+import com.example.demo.models.ERole;
+import com.example.demo.models.Role;
+import com.example.demo.repository.RoleRepository;
 
 @SpringBootApplication
 public class PriceTrackerBackendApplication {
@@ -19,13 +18,18 @@ public class PriceTrackerBackendApplication {
 	
 	//DATABASE INITIALIZATION
 	@Bean
-	CommandLineRunner init(UserRepository userRepository, ProductRepository productRepository) {
+	CommandLineRunner init(RoleRepository roleRepository) {
 		return args->{			
-			User user1 = new User("pippo","pippo@topolino.it", "tropsecret");
-			userRepository.save(user1);
 			
-			Product product1 = new Product("image_url", "name", "price", "link");
-			productRepository.save(product1);
+			// These inserts prevent SQL statements
+			Role role1 = new Role(ERole.values()[0]);
+			Role role2 = new Role(ERole.values()[1]);
+			Role role3 = new Role(ERole.values()[2]);
+			
+			roleRepository.save(role1);
+			roleRepository.save(role2);
+			roleRepository.save(role3);
+					
 		};	
 	}
 }
