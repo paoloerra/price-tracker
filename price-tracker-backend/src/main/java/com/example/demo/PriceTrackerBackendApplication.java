@@ -5,10 +5,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.example.demo.entites.Product;
-import com.example.demo.entites.User;
-import com.example.demo.repositories.ProductRepository;
-import com.example.demo.repositories.UserRepository;
+import com.example.demo.models.Product;
+import com.example.demo.models.User;
+import com.example.demo.repository.ProductRepository;
+import com.example.demo.repository.UserRepository;
 
 @SpringBootApplication
 public class PriceTrackerBackendApplication {
@@ -19,17 +19,12 @@ public class PriceTrackerBackendApplication {
 	
 	//DATABASE INITIALIZATION
 	@Bean
-	CommandLineRunner init(UserRepository userRepository ,ProductRepository productRepository) {
-		return args->{
-			User user1 =new User("paoloerra99@gmail.com","Paolo","Erra", "password");
-			User user2 =new User("antonio99@gmail.com","Antonio","Erra", "password");
-			User user3 =new User("emiliano99@gmail.com","emiliano","Erra", "password");
-			
+	CommandLineRunner init(UserRepository userRepository, ProductRepository productRepository) {
+		return args->{			
+			User user1 = new User("pippo","pippo@topolino.it", "tropsecret");
 			userRepository.save(user1);
-			userRepository.save(user2);
-			userRepository.save(user3);
 			
-			Product product1 = new Product();
+			Product product1 = new Product("image_url", "name", "price", "link");
 			productRepository.save(product1);
 		};	
 	}
