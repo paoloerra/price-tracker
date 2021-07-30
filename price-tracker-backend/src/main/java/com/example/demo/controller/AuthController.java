@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -31,6 +32,8 @@ import com.example.demo.repository.RoleRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.security.jwt.JwtUtils;
 import com.example.demo.security.services.UserDetailsImpl;
+import com.example.demo.service.EmailService;
+
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -50,6 +53,10 @@ public class AuthController {
 
 	@Autowired
 	JwtUtils jwtUtils;
+	
+	@Autowired
+	@Qualifier("javasampleapproachMailSender")
+	private EmailService email;
 
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -123,6 +130,8 @@ public class AuthController {
 
 		user.setRoles(roles);
 		userRepository.save(user);
+		
+		email.sendEmail(signUpRequest.getEmail(), signUpRequest.getUsername());
 
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 	}
