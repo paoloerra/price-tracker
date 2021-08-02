@@ -1,0 +1,54 @@
+<div *ngIf="!show">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Nome:</label>
+        <input type="text" class="form-control" name="name" placeholder="Inserisci il tuo username">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Cognome:</label>
+        <input type="text" class="form-control" name="name" placeholder="Inserisci il tuo username">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email:</label>
+        <input type="email" class="form-control" name="email" placeholder="Inserisci l'email" > 
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password:</label>
+        <input type="password" class="form-control" name="password" placeholder="Inserisci la password"  >
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Conferma password:</label>
+        <input type="password" class="form-control" name="password" placeholder="Inserisci la password">
+    </div>
+    <div class="form-check pb-4 pt-2">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Accetta termini e condizioni</label>
+    </div>
+    <div class="my-btn float-right" (click)="showStep()" >Avanti</div>
+    <div class="my-btn float-left">Effettua il login</div>
+
+</div>
+
+<div *ngIf="show">
+    <h4>Ciao Paolo! seleziona i tuoi interessi:</h4>
+    <div class="form-check pb-1 pt-1">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Tecnologia</label>
+    </div>
+    <div class="form-check pb-1">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Vestiti</label>
+    </div>
+    <div class="form-check pb-1">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Animali</label>
+    </div>
+    <div class="form-check pb-1">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Auto</label>
+    </div>
+    <div class="my-btn float-left mt-3" (click)="showStep()">Indietro</div>
+    <div class="my-btn float-right mt-3" >Prosegui</div>
+</div>

@@ -1,0 +1,30 @@
+.header {
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.btn-outline-secondary {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-color: #50A7C2;
+    color: #50A7C2;
+}
+
+.dropdown-item:focus {
+    background-color: #50A7C2;
+    font-weight: bold;
+}
+
+.btn-outline-secondary:hover {
+    background: #50A7C2; 
+    border-color: #50A7C2;
+    color: white;
+}
+
+.form-control {  
+    padding: 10px;
+    border-color: #50A7C2;
+}
