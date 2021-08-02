@@ -112,8 +112,12 @@
             </button>
         </div>
         <div class="modal-body ml-5 mr-5 mb-2">
-            <!-- <app-login></app-login> -->
-            <app-form-user></app-form-user>
+            <div class="alert alert-warning">Accedi o registrati per seguire e tracciare i prezzi dei prodotti<br> 
+                <div *ngIf="showSignUp == false" class="mt-1">Non hai un account? <a routerLink="" (click)="openSignup()">Registrati.</a></div>
+                <div *ngIf="showSignUp == true" class="mt-1">Hai già un account? <a routerLink="" (click)="openSignup()">Effettua il login.</a></div>
+            </div>
+            <div *ngIf="showSignUp == false"><app-login></app-login></div>
+            <div *ngIf="showSignUp== true"><app-form-user></app-form-user></div>
         </div>
         </div>
     </div>

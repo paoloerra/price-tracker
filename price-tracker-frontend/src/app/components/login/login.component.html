@@ -1,5 +1,4 @@
-<div class="alert alert-warning">Accedi o registrati per seguire e tracciare i prezzi dei prodotti<br> <div class="mt-1">Non hai un account? <a routerLink="">Registrati.</a></div></div>
-<form>
+<form *ngIf="resetPassword == false">
     <div class="form-group">
         <label for="exampleInputEmail1">Email:</label>
         <input type="email" class="form-control" name="email" placeholder="Inserisci l'email" > 
@@ -9,6 +8,21 @@
         <label for="exampleInputPassword1">Password:</label>
         <input type="password" class="form-control" name="password" placeholder="Inserisci la password"  >
     </div>
-    <button type="submit" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary" >Login</button>
-    <p class="form-text text-muted pt-3">Non hai un account? <a routerLink="">Effettua la registrazione.</a></p>
+    <div class="my-btn text-center m-2">Login</div>
+    <div class="mt-1">Non ricordi la tua password? <a routerLink="" (click)="showResetPassword()">Recuperala.</a></div>
+</form>
+
+<form *ngIf="resetPassword == true">
+    <div class="mt-1 mb-2" *ngIf="sendPassword == false">Vuoi ritornare al login? <a routerLink="" (click)="showResetPassword()">clicca qui.</a></div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Username:</label>
+        <input type="email" class="form-control" name="email" placeholder="Inserisci l'username" > 
+    </div>
+    <div class="my-btn text-center m-2" (click)="sendPass()">Recupera</div>
+    
+    <div class="recupera-codice pt-3" *ngIf="sendPassword == true">
+        <hr>
+        <h4>Ti abbiamo inviato una password temporanea all'email: p******@gmail.com</h4>
+        <div class="my-btn text-center m-2 mt-4" (click)="showLogin()">Effettua il login</div>
+    </div>
 </form>

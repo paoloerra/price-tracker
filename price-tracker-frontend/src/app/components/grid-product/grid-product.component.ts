@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GridProductComponent implements OnInit {
 
+  showSignUp: Boolean = false;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  openSignup() {
+    this.showSignUp = !this.showSignUp;
+  }
 }
