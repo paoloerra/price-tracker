@@ -1,4 +1,4 @@
-<div class="data-user pt-4">
+<div *ngIf="type == 'data'" class="data-user pt-4">
     <h3 class="pb-1">I tuoi dati</h3>
 
     <div class="form-group">
@@ -18,7 +18,7 @@
     <div class="my-btn float-right">Modifica i tuoi dati</div>
 </div>
 <br>
-<div class="preferences-user">
+<div *ngIf="type == 'preferences'" class="preferences-user">
     <h3 class="pb-1">Cambia le tue preferenze</h3>
     <div class="form-check pb-1 pt-1">
         <input type="checkbox" class="form-check-input" id="exampleCheck1">

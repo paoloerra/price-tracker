@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+ 
+  setting_type: String = "data";
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  changeSetting(setting : String){
+    this.setting_type = setting;
   }
 
 }

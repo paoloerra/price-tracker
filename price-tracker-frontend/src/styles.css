@@ -8,6 +8,10 @@ h2 {
     color: white;
 }
 
+.form-control {  
+    border-radius: 20px;
+    padding: 10px;
+  }
 
 .my-btn {
     background: #41D3BC;
@@ -48,7 +52,7 @@ a:hover {
 .form-control:focus {
     border-color: #50A7C2;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0), 0 0 8px #5bc2c2;;
-  }
+}
 
 @media only screen and (max-width: 600px) {
     body {

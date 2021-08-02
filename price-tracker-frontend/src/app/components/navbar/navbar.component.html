@@ -27,13 +27,12 @@
             <a class="dropdown-item" href="#">Zalando</a>
           </div>
         </div>
-        <input type="text" placeholder="Inserisci il link del prodotto" class="form-control">
+        <input type="text" placeholder="Inserisci il nome o il link del prodotto" class="form-control">
         <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="button">Cerca</button>
           </div>
       </div>
 </div>
-
 <!--MODALE-->
 <div class="modal fade" id="modal_settings" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
@@ -47,13 +46,13 @@
       <div class="modal-body ml-5 mr-5 mb-2">
           <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-              <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa fa-futbol-o" aria-hidden="true"></i>Dati utente</a>
-              <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"><i class="fa fa-music" aria-hidden="true"></i>Preferenze</a>
+              <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" (click)="changeSetting('data')"><i class="fa fa-futbol-o" aria-hidden="true"></i>Dati utente</a>
+              <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false" (click)="changeSetting('preferences')"><i class="fa fa-music" aria-hidden="true"></i>Preferenze</a>
             </div>
           </nav>
           <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade active show" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><app-data-user></app-data-user></div>
-            <div  class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"></div>
+            <div class="tab-pane fade active show" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><app-data-user [type]=setting_type></app-data-user></div>
+            <div  class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><app-data-user [type]=setting_type></app-data-user></div>
           </div>
       </div>
       </div>
