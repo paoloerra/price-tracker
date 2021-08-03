@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
-import { ProductsService } from '../../_service/products.service';
 
 @Component({
   selector: 'app-navbar',
