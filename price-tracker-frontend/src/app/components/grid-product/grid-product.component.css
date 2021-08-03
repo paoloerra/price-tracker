@@ -14,3 +14,17 @@ hr {
     height: 2px;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
+
+.card-img-top {
+    width: 40%;
+    height: 15vw;
+    object-fit: fill;
+
+    /* height: 185px;
+    background-image: url(/images/icons/no-image.svg);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: auto;
+    background-color: #fff;
+    box-shadow: 1px 1px 5px #a0a0aa; */
+}

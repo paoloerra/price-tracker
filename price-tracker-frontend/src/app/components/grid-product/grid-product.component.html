@@ -1,120 +1,45 @@
 <div class="container-fluid">
     <hr>
-        <h2 style="font-weight: bold;" class="text-center">LE MIGLIORI OFFERTE PER TE</h2>
+    <h2 style="font-weight: bold;" class="text-center">LE MIGLIORI OFFERTE PER TE</h2>
     <hr>
     <!--PRIMA RIGA-->
     <div class="row mb-3">
-      <div class="col-12 col-lg-3 col-sm-12">
-        <div class="card m-2">
-            <img src="assets/images/product.png" class="card-img-top p-3" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Nome prodotto</h5>
-                <div class="float-right"><h6>20$</h6></div>
-                <div id="red-price" class="float-left"><h6>Prezzo: 50$</h6></div><br>
-                <div class="text-center"><div style="width: 100%;" class="my-btn mt-3" data-toggle="modal" data-target="#modal_user">Segui</div></div>
+        <div class="col-6 col-lg-3 col-sm-12" *ngFor="let d of data">
+            <div class="card m-2">
+                <img src="{{d.image}}" class="card-img-top p-3" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{d.name}}</h5>
+                    <div class="float-right">
+                        <h6>20$</h6>
+                    </div>
+                    <div id="red-price" class="float-left">
+                        <h6>Prezzo: {{d.priceCurrentThird}}</h6>
+                    </div><br>
+                    <div class="text-center">
+                        <div style="width: 100%;" class="my-btn mt-3" data-toggle="modal" data-target="#modal_user">
+                            Segui</div>
+                    </div>
+                </div>
             </div>
-          </div>
-      </div>
-      <div class="col-12 col-lg-3 col-sm-12">
-        <div class="card m-2">
-            <img src="assets/images/product.png" class="card-img-top p-3" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Nome prodotto</h5>
-                <div class="float-right"><h6>20$</h6></div>
-                <div id="red-price" class="float-left"><h6>Prezzo: 50$</h6></div><br>
-                <div class="text-center"><div style="width: 100%;" class="my-btn mt-3" data-toggle="modal" data-target="#modal_user">Segui</div></div>
-            </div>
-          </div>
-      </div>
-      <div class="col-12 col-lg-3 col-sm-12">
-        <div class="card m-2">
-            <img src="assets/images/product.png" class="card-img-top p-3" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Nome prodotto</h5>
-                <div class="float-right"><h6>20$</h6></div>
-                <div id="red-price" class="float-left"><h6>Prezzo: 50$</h6></div><br>
-                <div class="text-center"><div style="width: 100%;" class="my-btn mt-3" data-toggle="modal" data-target="#modal_user">Segui</div></div>
-            </div>
-          </div>
-      </div>
-
-      <div class="col-12  col-lg-3 col-sm-12">
-        <div class="card m-2">
-            <img src="assets/images/product.png" class="card-img-top p-3" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Nome prodotto</h5>
-                <div class="float-right"><h6>20$</h6></div>
-                <div id="red-price" class="float-left"><h6>Prezzo: 50$</h6></div><br>
-                <div class="text-center"><div style="width: 100%;" class="my-btn mt-3" data-toggle="modal" data-target="#modal_user">Segui</div></div>
-            </div>
-          </div>
-      </div>
+        </div>
     </div>
-
-    <!--SECONDA COLONNA-->
-    <div class="row mb-3">
-        <div class="col-12  col-lg-3 col-sm-12">
-            <div class="card m-2">
-                <img src="assets/images/product.png" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Nome prodotto</h5>
-                    <div class="float-right"><h6>20$</h6></div>
-                    <div id="red-price" class="float-left"><h6>Prezzo: 50$</h6></div><br>
-                    <div class="text-center"><div style="width: 100%;" class="my-btn mt-3" data-toggle="modal" data-target="#modal_user">Segui</div></div>
-                </div>
-              </div>
-        </div>
-        <div class="col-12  col-lg-3 col-sm-12">
-            <div class="card m-2">
-                <img src="assets/images/product.png" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Nome prodotto</h5>
-                    <div class="float-right"><h6>20$</h6></div>
-                    <div id="red-price" class="float-left"><h6>Prezzo: 50$</h6></div><br>
-                    <div class="text-center"><div style="width: 100%;" class="my-btn mt-3" data-toggle="modal" data-target="#modal_user">Segui</div></div>
-                </div>
-              </div>
-        </div>
-        <div class="col-12  col-lg-3 col-sm-12">
-            <div class="card m-2">
-                <img src="assets/images/product.png" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Nome prodotto</h5>
-                    <div class="float-right"><h6>20$</h6></div>
-                    <div id="red-price" class="float-left"><h6>Prezzo: 50$</h6></div><br>
-                    <div class="text-center"><div style="width: 100%;" class="my-btn mt-3" data-toggle="modal" data-target="#modal_user">Segui</div></div>
-                </div>
-              </div>
-        </div>
-  
-        <div class="col-12  col-lg-3 col-sm-12">
-            <div class="card m-2">
-                <img src="assets/images/product.png" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Nome prodotto</h5>
-                    <div class="float-right"><h6>20$</h6></div>
-                    <div id="red-price" class="float-left"><h6>Prezzo: 50$</h6></div><br>
-                    <div class="text-center"><div style="width: 100%;" class="my-btn mt-3" data-toggle="modal" data-target="#modal_user">Segui</div></div>
-                </div>
-              </div>
-        </div>
-      </div>
 </div>
 
 <!--MODALE-->
-<div class="modal fade" id="modal_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="modal_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
     <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-        <div class="modal-header text-center">
-            <h5 class="modal-title" id="exampleModalLongTitle">Effettua il login</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body ml-5 mr-5 mb-2">
-            <!-- <app-login></app-login> -->
-            <app-form-user></app-form-user>
-        </div>
+            <div class="modal-header text-center">
+                <h5 class="modal-title" id="exampleModalLongTitle">Effettua il login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body ml-5 mr-5 mb-2">
+                <!-- <app-login></app-login> -->
+                <app-form-user></app-form-user>
+            </div>
         </div>
     </div>
 </div>
