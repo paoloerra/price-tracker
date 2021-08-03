@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   //Invio password temporanea, e visualizzazione del messaggio
   sendPass() {
-    this.sendPassword = true;
+    this.sendPassword = !this.sendPassword;
   }
 
 }
