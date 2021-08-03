@@ -9,7 +9,6 @@ import { ProductsService } from '../../_service/products.service';
 })
 export class NavbarComponent implements OnInit {
 
-
   constructor() { }
 
   query!: String;
