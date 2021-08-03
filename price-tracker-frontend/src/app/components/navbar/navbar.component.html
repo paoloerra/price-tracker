@@ -24,7 +24,7 @@
   <div class="input-group mb-3 pt-4 pl-1 pr-1 pb-4">
     <div class="input-group-prepend">
       <select class="btn btn-outline-secondary dropdown-toggle" [(ngModel)]="source">
-        <option value="">Seleziona eCommerce</option>
+        <!-- <option value="">Seleziona eCommerce</option> -->
         <option value="amazon.it.All">Amazon.it - All</option>
         <option value="amazon.it.Amazon">Amazon.it - Only Amazon</option>
         <option value="" disabled="">-----</option>
@@ -56,12 +56,12 @@
             </div>
           </nav>
           <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade active show" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><app-data-user [type]=setting_type></app-data-user></div>
-            <div  class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><app-data-user [type]=setting_type></app-data-user></div>
+            <div class="tab-pane fade active show" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><app-form-user [type]=setting_type></app-form-user></div>
+            <div  class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><app-form-user [type]=setting_type></app-form-user></div>
           </div>        
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade active show" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-            <app-data-user></app-data-user>
+            <!-- <app-data-user></app-data-user>-->
           </div>
           <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"></div>
         </div>

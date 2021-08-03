@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
   constructor() { }
 
   query!: String;
-  source!: String;
+  source: String = "amazon.it.All";
   
 
   @Output()
