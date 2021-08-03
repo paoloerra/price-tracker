@@ -1,3 +1,4 @@
+import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class GridProductComponent implements OnInit {
 
   showSignUp: Boolean = false;
+  @Input('products')
+  data!:any;  
   constructor() { }
 
   ngOnInit(): void {
@@ -17,3 +20,4 @@ export class GridProductComponent implements OnInit {
     this.showSignUp = !this.showSignUp;
   }
 }
+
