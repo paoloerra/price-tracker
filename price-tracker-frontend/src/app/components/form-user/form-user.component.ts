@@ -7,14 +7,15 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./form-user.component.css']
 })
 export class FormUserComponent implements OnInit {
+
+  @Input()
+  type: String = "data";
+  
   show: boolean = false;
 
   signupForm!: FormGroup;
 
   interestsForm!: FormGroup;
-
-  @Input()
-  type: String = "data";
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -37,17 +38,21 @@ export class FormUserComponent implements OnInit {
     });
   }
 
-  showPreferences() {
+  showStep() {
     console.log(this.signupForm.value);
-    this.type = "preferences";
+    this.show = !this.show;
+  }
+
+  SaveInterests() {
+    console.log(this.interestsForm.value);
   }
 
   showData() {
     this.type = "data";
   }
 
-
-  SaveInterests() {
-    console.log(this.interestsForm.value);
+  showPreferences() {
+    console.log(this.signupForm.value);
+    this.type = "preferences";
   }
 }
