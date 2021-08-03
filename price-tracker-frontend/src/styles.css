@@ -1,5 +1,6 @@
 body {
-    background: linear-gradient(0deg, rgba(183,248,219,1) 0%, rgba(80,167,194,1) 100%);    
+    /* background: linear-gradient(0deg, rgba(183,248,219,1) 0%, rgba(80,167,194,1) 100%);  */ 
+    background-color: rgba(80,167,194,1);
     margin-left: 5%;
     margin-right: 5%;
 }

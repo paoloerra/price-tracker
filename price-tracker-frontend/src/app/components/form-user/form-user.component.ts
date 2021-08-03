@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -12,6 +12,9 @@ export class FormUserComponent implements OnInit {
   signupForm!: FormGroup;
 
   interestsForm!: FormGroup;
+
+  @Input()
+  type: String = "data";
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -34,10 +37,15 @@ export class FormUserComponent implements OnInit {
     });
   }
 
-  showStep() {
+  showPreferences() {
     console.log(this.signupForm.value);
-    this.show = !this.show;
+    this.type = "preferences";
   }
+
+  showData() {
+    this.type = "data";
+  }
+
 
   SaveInterests() {
     console.log(this.interestsForm.value);

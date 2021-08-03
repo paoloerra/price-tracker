@@ -10,7 +10,8 @@ export class GridProductComponent implements OnInit {
 
   showSignUp: Boolean = false;
   @Input('products')
-  data!:any;  
+  data!:any;
+  
   constructor() { }
 
   ngOnInit(): void {

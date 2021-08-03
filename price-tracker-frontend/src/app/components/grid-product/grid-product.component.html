@@ -4,19 +4,20 @@
     <hr>
     <!--PRIMA RIGA-->
     <div class="row mb-3">
-        <div class="col-6 col-lg-3 col-sm-12" *ngFor="let d of data">
-            <div class="card m-2">
-                <img src="{{d.image}}" class="card-img-top p-3" alt="...">
+        <div class="col-lg-3 col-sm-12 mt-3 " *ngFor="let d of data">
+            <div class="card">
+                <img src="{{d.image}}" style="height: 185px;" class="card-img-top p-3 mt-4 mx-auto" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">{{d.name}}</h5>
+                    <h5 class="card-title text-truncate">{{d.name }}</h5>
                     <div class="float-right">
                         <h6>20$</h6>
                     </div>
                     <div id="red-price" class="float-left">
                         <h6>Prezzo: {{d.priceCurrentThird}}</h6>
                     </div><br>
+                    <hr>
                     <div class="text-center">
-                        <div style="width: 100%;" class="my-btn mt-3" data-toggle="modal" data-target="#modal_user">
+                        <div style="width: 100%;" class="my-btn mt-2" data-toggle="modal" data-target="#modal_user">
                             Segui</div>
                     </div>
                 </div>
