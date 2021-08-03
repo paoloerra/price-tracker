@@ -1,75 +1,3 @@
-<<<<<<< HEAD
-<!--NAV BAR-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">
-    <h3><b>Price</b>Tracker</h3>
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mx-auto">
-      <li class="nav-item">
-      </li>
-    </ul>
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item"><b class="pr-4">Visualizza la tua lista</b></li>
-      <li class="nav-item" data-toggle="modal" data-target="#modal_settings"><b class="pr-4">Impostazioni</b></li>
-    </ul>
-  </div>
-</nav>
-<!--Ricerca-->
-<div class="container-fluid header bg-light w-100">
-  <div class="input-group mb-3 pt-4 pl-1 pr-1 pb-4">
-    <div class="input-group-prepend">
-      <select class="btn btn-outline-secondary dropdown-toggle" [(ngModel)]="source">
-        <option value="">Seleziona eCommerce</option>
-        <option value="amazon.it.All">Amazon.it - All</option>
-        <option value="amazon.it.Amazon">Amazon.it - Only Amazon</option>
-        <option value="" disabled="">-----</option>
-        <option value="ebay.it">eBay.it</option>
-      </select>     
-    </div>
-    <input type="text" placeholder="Inserisci il link del prodotto" class="form-control" [(ngModel)]="query">
-    <div class="input-group-append">
-      <button (click)="findProduct(query, source)" class="btn btn-outline-secondary" type="button">Cerca</button>
-    </div>
-  </div>
-</div>
-<!--MODALE-->
-<div class="modal fade" id="modal_settings" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true">
-  <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h5 class="modal-title" id="exampleModalLongTitle">Impostazioni utente</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body ml-5 mr-5 mb-2">
-          <nav>
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-              <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" (click)="changeSetting('data')"><i class="fa fa-futbol-o" aria-hidden="true"></i>Dati utente</a>
-              <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false" (click)="changeSetting('preferences')"><i class="fa fa-music" aria-hidden="true"></i>Preferenze</a>
-            </div>
-          </nav>
-          <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade active show" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><app-data-user [type]=setting_type></app-data-user></div>
-            <div  class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><app-data-user [type]=setting_type></app-data-user></div>
-          </div>        
-        <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane fade active show" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-            <app-data-user></app-data-user>
-          </div>
-          <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-=======
 <!--NAV BAR-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">
@@ -140,5 +68,4 @@
       </div>
     </div>
   </div>
->>>>>>> origin/feature/Auth
 </div>

@@ -2,6 +2,9 @@ package com.example.demo.controller;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.models.ERole;
@@ -131,9 +135,38 @@ public class AuthController {
 		user.setRoles(roles);
 		userRepository.save(user);
 		
-		email.sendEmail(signUpRequest.getEmail(), signUpRequest.getUsername());
+		email.sendEmailSignUp(signUpRequest.getEmail(), signUpRequest.getUsername());
 
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+	}
+	
+	@PostMapping("/resetpassword")
+	public String resetPassword(@RequestBody Map<String, String> payLoad) {
+		
+			//Getting User username
+			Optional<User> utente = userRepository.findByUsername(payLoad.get("username"));
+			
+			Random rand = new Random();
+			
+			String newPassword = "";
+			
+			//Generating new random temporary password
+			for (int i = 0; i < 6; i++) {
+				
+				newPassword += String.valueOf(rand.nextInt(9));
+			}
+			
+			//Setting the password
+			utente.get().setPassword(encoder.encode(newPassword));
+			
+			//updating user password
+			userRepository.save(utente.get());
+			
+			//Sending email to login with new password
+			email.sendEmailResetPass(utente, newPassword);
+			
+			return "new password generated";
+		
 	}
 }
 
