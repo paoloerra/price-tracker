@@ -9,6 +9,13 @@ import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DataUserComponent } from './components/data-user/data-user.component';
+import { SliderComponent } from './components/slider/slider.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -18,12 +25,18 @@ import { DataUserComponent } from './components/data-user/data-user.component';
     LoginComponent,
     NavbarComponent,
     FooterComponent,
-    DataUserComponent
+    DataUserComponent,
+    SliderComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
-  ],
+    AppRoutingModule,
+    FormsModule,
+    NgbModule,
+    
+    
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
