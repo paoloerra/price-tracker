@@ -26,8 +26,8 @@ export class NavbarComponent implements OnInit {
     this.setting_type = setting;
   }
 
-  findProduct(query: any, source: any) {
-    this.productEvent.emit({ query: query, source: source });
+  findProduct() {
+    this.productEvent.emit({ query: this.query, source: this.source });
   }
 
 }
