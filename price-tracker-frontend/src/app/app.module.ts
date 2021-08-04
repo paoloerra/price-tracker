@@ -12,6 +12,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     LoginComponent,
     NavbarComponent,
     FooterComponent,
+    CarouselComponent,
   ],
   imports: [
     BrowserModule,
