@@ -41,6 +41,6 @@ export class ResetPassService {
   }
 
   ngOnDestroy() {this.sub.unsubscribe()
-    console.log("hello");
+    console.log("destroyed");
   }
 }
