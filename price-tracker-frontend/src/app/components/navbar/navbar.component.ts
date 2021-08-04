@@ -14,10 +14,22 @@ export class NavbarComponent implements OnInit {
 
   query!: String;
   source: String = "amazon.it.All";
+
+  @Input()
+  msgFromParent: any;
   
 
   @Output()
   productEvent = new EventEmitter<{ query: String, source: String }>();
+
+  @Output()
+  logoutEvent = new EventEmitter<any>();
+
+  logout(): any {
+
+    this.logoutEvent.emit();
+
+  }
 
   ngOnInit(): void {
   }
