@@ -38,7 +38,6 @@ import com.example.demo.security.jwt.JwtUtils;
 import com.example.demo.security.services.UserDetailsImpl;
 import com.example.demo.service.EmailService;
 
-
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
@@ -57,7 +56,7 @@ public class AuthController {
 
 	@Autowired
 	JwtUtils jwtUtils;
-	
+
 	@Autowired
 	@Qualifier("javasampleapproachMailSender")
 	private EmailService email;
@@ -70,37 +69,28 @@ public class AuthController {
 
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		String jwt = jwtUtils.generateJwtToken(authentication);
-		
-		UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();		
-		List<String> roles = userDetails.getAuthorities().stream()
-				.map(item -> item.getAuthority())
+
+		UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+		List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
 				.collect(Collectors.toList());
 
-		return ResponseEntity.ok(new JwtResponse(jwt, 
-												 userDetails.getId(), 
-												 userDetails.getUsername(), 
-												 userDetails.getEmail(), 
-												 roles));
+		return ResponseEntity.ok(
+				new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), roles));
 	}
 
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
 		if (userRepository.existsByUsername(signUpRequest.getUsername())) {
-			return ResponseEntity
-					.badRequest()
-					.body(new MessageResponse("Error: Username is already taken!"));
+			return ResponseEntity.badRequest().body(new MessageResponse("Error: Username is already taken!"));
 		}
 
 		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
-			return ResponseEntity
-					.badRequest()
-					.body(new MessageResponse("Error: Email is already in use!"));
+			return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
 		}
 
 		// Create new user's account
-		User user = new User(signUpRequest.getUsername(), 
-							 signUpRequest.getEmail(),
-							 encoder.encode(signUpRequest.getPassword()));
+		User user = new User(signUpRequest.getUsername(), signUpRequest.getEmail(),
+				encoder.encode(signUpRequest.getPassword()));
 
 		Set<String> strRoles = signUpRequest.getRole();
 		Set<Role> roles = new HashSet<>();
@@ -134,39 +124,38 @@ public class AuthController {
 
 		user.setRoles(roles);
 		userRepository.save(user);
-		
+
 		email.sendEmailSignUp(signUpRequest.getEmail(), signUpRequest.getUsername());
 
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 	}
-	
+
 	@PostMapping("/resetpassword")
 	public String resetPassword(@RequestBody Map<String, String> payLoad) {
-		
-			//Getting User username
-			Optional<User> utente = userRepository.findByUsername(payLoad.get("username"));
-			
-			Random rand = new Random();
-			
-			String newPassword = "";
-			
-			//Generating new random temporary password
-			for (int i = 0; i < 6; i++) {
-				
-				newPassword += String.valueOf(rand.nextInt(9));
-			}
-			
-			//Setting the password
-			utente.get().setPassword(encoder.encode(newPassword));
-			
-			//updating user password
-			userRepository.save(utente.get());
-			
-			//Sending email to login with new password
-			email.sendEmailResetPass(utente, newPassword);
-			
-			return "new password generated";
-		
+
+		// Getting User username
+		Optional<User> utente = userRepository.findByUsername(payLoad.get("username"));
+
+		Random rand = new Random();
+
+		String newPassword = "";
+
+		// Generating new random temporary password
+		for (int i = 0; i < 6; i++) {
+
+			newPassword += String.valueOf(rand.nextInt(9));
+		}
+
+		// Setting the password
+		utente.get().setPassword(encoder.encode(newPassword));
+
+		// updating user password
+		userRepository.save(utente.get());
+
+		// Sending email to login with new password
+		email.sendEmailResetPass(utente, newPassword);
+
+		return "new password generated";
+
 	}
 }
-

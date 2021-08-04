@@ -1,4 +1,4 @@
 <app-navbar (productEvent)="getProduct($event)"></app-navbar>
-<app-grid-product [products]=products></app-grid-product>
+<app-grid-product [products]=products [user]=user (addProductEvent)="addProduct($event)"></app-grid-product>
 <app-footer></app-footer>
 <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

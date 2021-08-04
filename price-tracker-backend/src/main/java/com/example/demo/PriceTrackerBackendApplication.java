@@ -19,16 +19,18 @@ public class PriceTrackerBackendApplication {
 	//DATABASE INITIALIZATION
 	@Bean
 	CommandLineRunner init(RoleRepository roleRepository) {
-		return args->{			
+		return args->{						
 			
-			// These inserts prevent SQL statements
-			Role role1 = new Role(ERole.values()[0]);
-			Role role2 = new Role(ERole.values()[1]);
-			Role role3 = new Role(ERole.values()[2]);
-			
-			roleRepository.save(role1);
-			roleRepository.save(role2);
-			roleRepository.save(role3);
+			if(!roleRepository.existsById((long) 1)) {
+				// These inserts prevent SQL statements
+				Role role1 = new Role(ERole.values()[0]);
+				Role role2 = new Role(ERole.values()[1]);
+				Role role3 = new Role(ERole.values()[2]);
+				
+				roleRepository.save(role1);
+				roleRepository.save(role2);
+				roleRepository.save(role3);
+			}
 					
 		};	
 	}

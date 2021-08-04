@@ -10,13 +10,14 @@
                 <div class="card-body">
                     <h5 class="card-title">{{d.name}}</h5>
                     <div class="float-right">
-                        <h6>20$</h6>
+                        <h6>{{d.priceCurrent}}€</h6>
                     </div>
                     <div id="red-price" class="float-left">
-                        <h6>Prezzo: {{d.priceCurrentThird}}</h6>
+                        <h6>Prezzo: {{d.priceCurrentThird}}€</h6>
                     </div><br>
                     <div class="text-center">
-                        <div style="width: 100%;" class="my-btn mt-3" data-toggle="modal" data-target="#modal_user">
+                        <div (click)="product=d" style="width: 100%;" class="my-btn mt-3" data-toggle="modal"
+                            data-target="#modal_addProduct">
                             Segui</div>
                     </div>
                 </div>
@@ -24,24 +25,56 @@
         </div>
     </div>
 </div>
-<!--MODALE-->
-<div class="modal fade" id="modal_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+<!--Modal user-->
+<div class="modal fade" id="modal_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
     <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-        <div class="modal-header text-center">
-            <h5 class="modal-title" id="exampleModalLongTitle">Effettua il login</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body ml-5 mr-5 mb-2">
-            <div class="alert alert-warning">Accedi o registrati per seguire e tracciare i prezzi dei prodotti<br> 
-                <div *ngIf="showSignUp == false" class="mt-1">Non hai un account? <a routerLink="" (click)="openSignup()">Registrati.</a></div>
-                <div *ngIf="showSignUp == true" class="mt-1">Hai già un account? <a routerLink="" (click)="openSignup()">Effettua il login.</a></div>
+            <div class="modal-header text-center">
+                <h5 class="modal-title" id="exampleModalLongTitle">Effettua il login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div *ngIf="showSignUp == false"><app-login></app-login></div>
-            <div *ngIf="showSignUp== true"><app-form-user></app-form-user></div>
+            <div class="modal-body ml-5 mr-5 mb-2">
+                <div class="alert alert-warning">Accedi o registrati per seguire e tracciare i prezzi dei prodotti<br>
+                    <div *ngIf="showSignUp == false" class="mt-1">Non hai un account? <a routerLink=""
+                            (click)="openSignup()">Registrati.</a></div>
+                    <div *ngIf="showSignUp == true" class="mt-1">Hai già un account? <a routerLink=""
+                            (click)="openSignup()">Effettua il login.</a></div>
+                </div>
+                <div *ngIf="showSignUp == false">
+                    <app-login></app-login>
+                </div>
+                <div *ngIf="showSignUp== true">
+                    <app-form-user></app-form-user>
+                </div>
+            </div>
         </div>
+    </div>
+</div>
+
+<!--Modal addProduct-->
+<div class="modal fade" id="modal_addProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{product.name}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body ml-5 mr-5 mb-2">
+                <img class="card-img-top" src="{{product.image}}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Soglia di prezzo</h5>
+                  <p class="card-text">Appena l'articolo scenderà sottosoglia verrai avvisato</p>
+                  <input type="text" class="form-control" name="treshold" placeholder="Inserisci una soglia di prezzo" [(ngModel)]="threshold" > 
+                  <button class="btn btn-primary" (click)="addProduct(product)">Aggiungi</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
