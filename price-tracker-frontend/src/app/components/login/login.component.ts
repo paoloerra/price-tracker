@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ResetPassService } from 'src/app/_service/reset-pass.service';
 
 @Component({
   selector: 'app-login',
@@ -6,11 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
+
   resetPassword = false; //Visualizza il form per il recupero password
   sendPassword = false; //Visualizza il messaggio di invio password temporanea
+  
+  username!: String;
 
-  constructor() { }
+  payLoad = new Map();
+  
+  email! : string;
+
+  constructor(private sendPass: ResetPassService) { }
 
   ngOnInit(): void {
   }
@@ -20,9 +27,26 @@ export class LoginComponent implements OnInit {
     this.resetPassword = !this.resetPassword;
   }
 
+  
+
   //Invio password temporanea, e visualizzazione del messaggio
-  sendPass() {
-    this.sendPassword = !this.sendPassword;
+  send() {
+    const onSuccess = (response: any) => {
+      console.log("Succesfully sent", response);
+      this.sendPassword =  true;
+      console.log(response.message);
+      this.email = response.message;
+    } 
+    const onError = (response: any) => {
+      console.log("Errore", response);
+    }
+
+    this.payLoad.set("username", this.username);
+    this.sendPass.resetPass(this.payLoad).subscribe(
+      onSuccess, onError
+    );
   }
+
+
 
 }
