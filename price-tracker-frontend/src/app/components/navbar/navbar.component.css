@@ -28,3 +28,13 @@
     padding: 10px;
     border-color: #50A7C2;
 }
+
+select {
+    width: 190px;
+}
+
+@media only screen and (max-width: 600px) {
+    select {
+        width: 120px;
+    }
+}
