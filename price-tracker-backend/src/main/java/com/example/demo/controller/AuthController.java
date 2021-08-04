@@ -140,7 +140,7 @@ public class AuthController {
 	}
 	
 	@PostMapping("/resetpassword")
-	public String resetPassword(@RequestBody Map<String, String> payLoad) {
+	public ResponseEntity<?>  resetPassword(@RequestBody Map<String, String> payLoad) {
 		
 			//Getting User username
 			Optional<User> utente = userRepository.findByUsername(payLoad.get("username"));
@@ -164,7 +164,7 @@ public class AuthController {
 			//Sending email to login with new password
 			email.sendEmailResetPass(utente, newPassword);
 			
-			return "new password generated";
+			return ResponseEntity.ok(new MessageResponse(utente.get().getEmail()));
 		
 	}
 }
