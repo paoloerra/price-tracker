@@ -4,3 +4,8 @@ Lo scopo principale di questo progetto è quello di realizzare un’applicazione
 - Visualizzazione della lista dei prodotti seguiti;
 - Invio di notifiche nel momento in cui uno dei prodotti seguiti cala di prezzo;
 - Visualizzazione di un catalogo che presenta dei prodotti generici con le migliori offerte;
+
+## Tecnologie utilizzate:
+- Angular 12 per la parte front-end;
+- Spring boot per la realizzazione di servizi rest:
+- Mysql e hybernate per la realizzazione delle operazioni di CRUD
