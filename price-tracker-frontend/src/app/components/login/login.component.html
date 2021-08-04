@@ -19,14 +19,14 @@
     <div class="mt-1 mb-2" *ngIf="sendPassword == false">Vuoi ritornare al login? <a routerLink="" (click)="showResetPassword()">clicca qui.</a></div>
     <div class="form-group">
         <label for="exampleInputEmail1">Username:</label>
-        <input type="email" class="form-control" name="email" placeholder="Inserisci l'username" > 
+        <input type="email" class="form-control" [(ngModel)]="username" name="username" placeholder="Inserisci l'username" > 
     </div>
-    <div class="my-btn text-center m-2" (click)="sendPass()">Recupera</div>
+    <div class="my-btn text-center m-2" (click)="send()">Recupera</div>
     
     <!--INVIO EMAIL-->
     <div class="recupera-codice pt-3" *ngIf="sendPassword == true">
         <hr>
-        <h4>Ti abbiamo inviato una password temporanea all'email: p******@gmail.com</h4>
+        <h4>Ti abbiamo inviato una password temporanea all'email: {{email}}</h4>
         <div class="my-btn text-center m-2 mt-4" (click)="showResetPassword()">Effettua il login</div>
     </div>
 </form>

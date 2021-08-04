@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/_service/auth.service';
 import { TokenStorageService } from 'src/app/_service/token-storage.service';
+import { ResetPassService } from 'src/app/_service/reset-pass.service';
 
 @Component({
   selector: 'app-login',
@@ -9,9 +10,15 @@ import { TokenStorageService } from 'src/app/_service/token-storage.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
+
   resetPassword = false; //Visualizza il form per il recupero password
   sendPassword = false; //Visualizza il messaggio di invio password temporanea
+  
+  username!: String;
+
+  payLoad = new Map();
+  
+  email! : string;
 
   isLoggedIn = false;
   isLoginFailed = false;
@@ -20,7 +27,7 @@ export class LoginComponent implements OnInit {
   //Form dati utente
   loginForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private tokenStorage: TokenStorageService) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private tokenStorage: TokenStorageService, private sendPass: ResetPassService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -59,9 +66,26 @@ export class LoginComponent implements OnInit {
     this.resetPassword = !this.resetPassword;
   }
 
+  
+
   //Invio password temporanea, e visualizzazione del messaggio
-  sendPass() {
-    this.sendPassword = !this.sendPassword;
+  send() {
+    const onSuccess = (response: any) => {
+      console.log("Succesfully sent", response);
+      this.sendPassword =  true;
+      console.log(response.message);
+      this.email = response.message;
+    } 
+    const onError = (response: any) => {
+      console.log("Errore", response);
+    }
+
+    this.payLoad.set("username", this.username);
+    this.sendPass.resetPass(this.payLoad).subscribe(
+      onSuccess, onError
+    );
   }
+
+
 
 }

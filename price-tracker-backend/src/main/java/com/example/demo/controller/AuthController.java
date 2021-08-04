@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.models.ERole;
@@ -141,7 +140,7 @@ public class AuthController {
 	}
 	
 	@PostMapping("/resetpassword")
-	public String resetPassword(@RequestBody Map<String, String> payLoad) {
+	public ResponseEntity<?>  resetPassword(@RequestBody Map<String, String> payLoad) {
 		
 			//Getting User username
 			Optional<User> utente = userRepository.findByUsername(payLoad.get("username"));
@@ -165,7 +164,7 @@ public class AuthController {
 			//Sending email to login with new password
 			email.sendEmailResetPass(utente, newPassword);
 			
-			return "new password generated";
+			return ResponseEntity.ok(new MessageResponse(utente.get().getEmail()));
 		
 	}
 }
