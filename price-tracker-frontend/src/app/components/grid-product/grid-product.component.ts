@@ -11,6 +11,8 @@ export class GridProductComponent implements OnInit {
   showSignUp: Boolean = false;
   @Input('products')
   data!:any;
+
+  title_modal = "Effettua il login";
   
   constructor() { }
 
@@ -19,6 +21,12 @@ export class GridProductComponent implements OnInit {
 
   openSignup() {
     this.showSignUp = !this.showSignUp;
+    if(this.showSignUp == false) {
+      this.title_modal = "Effettua il login";
+    }
+    else {
+      this.title_modal = "Effettua la registrazione";
+    }
   }
 }
 

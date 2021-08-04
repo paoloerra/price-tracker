@@ -6,7 +6,7 @@
     <div class="row mb-3">
         <div class="col-lg-3 col-sm-12 mt-3 " *ngFor="let d of data">
             <div class="card">
-                <img src="{{d.image}}" style="height: 185px;" class="card-img-top p-3 mt-4 mx-auto" alt="...">
+                <img src="{{d.image}}" style="height: 200px;" class="card-img-top p-3 mt-4 mx-auto" alt="...">
                 <div class="card-body">
                     <h5 class="card-title text-truncate">{{d.name }}</h5>
                     <div class="float-right">
@@ -30,7 +30,7 @@
     <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
         <div class="modal-header text-center">
-            <h5 class="modal-title" id="exampleModalLongTitle">Effettua il login</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">{{title_modal}}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>

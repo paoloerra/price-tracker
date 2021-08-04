@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { ProductsService } from './_service/products.service';
 import { NgxSpinnerService } from "ngx-spinner";
+<<<<<<< HEAD
+=======
+import { TokenStorageService } from './_service/token-storage.service';
+>>>>>>> feature/Auth
 
 
 @Component({
@@ -14,7 +18,14 @@ export class AppComponent {
   source!: String;
   products: any;
 
+<<<<<<< HEAD
   constructor(private product: ProductsService, private spinner: NgxSpinnerService) { }
+=======
+  isLoggedIn = false;
+
+
+  constructor(private product: ProductsService, private spinner: NgxSpinnerService, private tokenStorageService: TokenStorageService) { }
+>>>>>>> feature/Auth
 
   getProduct($event: any) {
     this.spinner.show();
@@ -24,4 +35,22 @@ export class AppComponent {
       console.log(this.products);
     });
   }
+<<<<<<< HEAD
+=======
+
+  ngOnInit() {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    console.log("Loggato: "+this.isLoggedIn);
+    if(this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      console.log("Utente:" +user);
+    }
+  }
+
+  logout() {
+    this.tokenStorageService.signOut();
+    window.location.reload();
+  }
+
+>>>>>>> feature/Auth
 }
