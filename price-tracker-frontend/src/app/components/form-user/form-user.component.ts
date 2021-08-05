@@ -16,7 +16,7 @@ export class FormUserComponent implements OnInit {
   type: String = "data";
 
   @Input()
-  user: User = new User(-1, "", "", "", -1);
+  user!: User;
 
   @Input()
   modal_type: String =  "register";
