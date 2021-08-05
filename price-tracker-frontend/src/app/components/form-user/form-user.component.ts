@@ -16,7 +16,7 @@ export class FormUserComponent implements OnInit {
   type: String = "data";
 
   @Input()
-  user: any;
+  user: User = new User(-1, "", "", "", -1);
 
   @Input()
   modal_type: String =  "register";
@@ -44,6 +44,7 @@ export class FormUserComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.user = new User(-1, "", "", "", -1);
     this.signupForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
       email: ['', [Validators.required, Validators.email]],
