@@ -1,9 +1,5 @@
-import { Component, Input, Output } from '@angular/core';
-import { ProductsService } from './_service/products.service';
-import { NgxSpinnerService } from "ngx-spinner";
+import { Component } from '@angular/core';
 import { TokenStorageService } from './_service/token-storage.service';
-import { User } from './model/user';
-
 
 @Component({
   selector: 'app-root',
@@ -21,34 +17,14 @@ export class AppComponent {
 
   isLoggedIn = false;
 
-  constructor(private product: ProductsService, private spinner: NgxSpinnerService, private tokenStorageService: TokenStorageService) {
-    this.user = JSON.parse(this.tokenStorageService.getUser())
-
-   }  
-
-  getProduct($event: any) {
-    this.spinner.show();
-    this.product.getProducts($event.query, $event.source).subscribe(data => {
-      this.spinner.hide()
-      this.products = data;
-      console.log(this.products);
-    });
-  }
-
-  addProduct($event: any) {
-    this.spinner.show();
-    this.product.addProduct($event.product, $event.user, $event.threshold).subscribe(data => {
-      this.spinner.hide();
-      console.log(data);
-    });
-  }
+  constructor(private tokenStorageService: TokenStorageService) { 
+    this.user = JSON.parse(this.tokenStorageService.getUser())    
+  }  
 
   ngOnInit() {
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
-    console.log("Loggato: "+this.isLoggedIn);
+    this.isLoggedIn = !!this.tokenStorageService.getToken();    
     if(this.isLoggedIn) {
-      const user = this.tokenStorageService.getUser();
-      console.log("Utente:" +user);
+      const user = this.tokenStorageService.getUser();      
     }
   }
   

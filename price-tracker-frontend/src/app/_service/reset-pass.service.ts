@@ -15,8 +15,7 @@ export class ResetPassService {
   constructor(private http: HttpClient) { }
 
   resetPass(payLoad: Map<string, string>): Observable<Map<string, string>> {
-   
-    console.log(payLoad);
+       
     const headerDict = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -34,13 +33,12 @@ export class ResetPassService {
     const body = JSON.stringify(jsonObject)
     
     this.sub = this.http.post(this.url, body, requestOptions);
-    
-    console.log(this.sub);
+        
     
     return this.sub;
   }
 
   ngOnDestroy() {this.sub.unsubscribe()
-    console.log("destroyed");
+    
   }
 }

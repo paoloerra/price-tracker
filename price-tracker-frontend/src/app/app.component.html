@@ -1,6 +1,4 @@
-<app-navbar [msgFromParent]='isLoggedIn' (logoutEvent)="logout()" (productEvent)="getProduct($event)"></app-navbar>
-<app-carousel></app-carousel>
-<app-carousel-products></app-carousel-products>
-<app-grid-product [products]=products [user]=user (addProductEvent)="addProduct($event)"></app-grid-product>
+<app-navbar [msgFromParent]='isLoggedIn' (logoutEvent)="logout()"></app-navbar>
+<router-outlet></router-outlet>
 <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
 <app-footer></app-footer>

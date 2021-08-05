@@ -38,8 +38,7 @@ export class FormUserComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private authService: AuthService) { 
   }
 
-  ngOnChanges() {
-    console.log(this.user);
+  ngOnChanges() {    
   }
 
 
@@ -63,8 +62,7 @@ export class FormUserComponent implements OnInit {
   }
 
   //Registrazione utente
-  registerUser(){
-    console.log(this.signupForm.value);
+  registerUser(){    
     if(this.signupForm.controls['password'].value != this.signupForm.controls['verify_password'].value) {
       this.errorMessage = "Le password non coincidono";
     }
@@ -73,28 +71,24 @@ export class FormUserComponent implements OnInit {
     }
     if(this.signupForm.controls['password'].value ==  this.signupForm.controls['verify_password'].value && this.signupForm.controls['checked'].value == true) {
       this.authService.register(this.signupForm.value).subscribe(
-        data => {
-          console.log(data);
+        data => {          
           this.errorMessage = "";
           this.successMessage = "Registrazione effettuata con successo!";
         },
         err => {
-          this.errorMessage = err.error.message;
-          console.log(this.errorMessage);
+          this.errorMessage = err.error.message;          
         }
       );
     }
 
   }
 
-  showStep() {
-    console.log(this.signupForm.value);
+  showStep() {    
     this.show = !this.show;
   }
 
   //Metodo per salvare gli interessi dell'utente
-  SaveInterests() {
-    console.log(this.interestsForm.value);
+  SaveInterests() {    
   }
 
   //Visualizza form utente
@@ -104,7 +98,6 @@ export class FormUserComponent implements OnInit {
 
   //Visualizza form interessi
   showPreferences() {
-    console.log(this.signupForm.value);
     this.type = "preferences";
   }
 

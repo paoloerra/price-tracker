@@ -12,7 +12,7 @@ import { TokenStorageService } from 'src/app/_service/token-storage.service';
 export class GridProductComponent implements OnInit {
 
   showSignUp: Boolean = false;
-  product!: Product;  
+  public product!: Product;  
   threshold!: Number;
 
   modal_type: String = "register";
@@ -35,8 +35,7 @@ export class GridProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.mode = this.setMode.getUser();
-    console.log(this.mode, "ciao");
+    this.mode = this.setMode.getUser();    
   }
 
   openSignup() {
@@ -51,8 +50,7 @@ export class GridProductComponent implements OnInit {
   }
 
   addProduct(product: Product) {
-    this.addProductEvent.emit({ product: product, user: this.user, threshold: this.threshold });
-    console.log(this.user);
+    this.addProductEvent.emit({ product: product, user: this.user, threshold: this.threshold });    
   }
 
 }

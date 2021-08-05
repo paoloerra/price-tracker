@@ -1,6 +1,6 @@
 <!--NAV BAR-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" [routerLink]="['']">
     <h3><b>Price</b>Tracker</h3>
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -14,31 +14,16 @@
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item"><b class="pr-4">Visualizza la tua lista</b></li>
-      <li *ngIf="msgFromParent == false"class="nav-item" data-toggle="modal" data-target="#modal_user"><b class="pr-4">Login</b></li>
-      <li *ngIf="msgFromParent" class="nav-item" data-toggle="modal" data-target="#modal_settings"><b class="pr-4">Profilo Utente</b></li>
-      <li *ngIf="msgFromParent" class="nav-item" data-toggle="modal" data-target="#modal_logout"><b class="pr-4">Logout</b></li>
+      <li class="nav-item"><a [routerLink]="['/wishlist']"><b class="pr-4">Visualizza la tua lista</b></a></li>
+      <li *ngIf="msgFromParent == false" class="nav-item" data-toggle="modal" data-target="#modal_user"><b
+          class="pr-4">Login</b></li>
+      <li *ngIf="msgFromParent" class="nav-item" data-toggle="modal" data-target="#modal_settings"><b
+          class="pr-4">Profilo Utente</b></li>
+      <li *ngIf="msgFromParent" class="nav-item" data-toggle="modal" data-target="#modal_logout"><b
+          class="pr-4">Logout</b></li>
     </ul>
   </div>
 </nav>
-<!--Ricerca-->
-<div class="container-fluid header bg-light w-100">
-  <div class="input-group mb-3 pt-4 pl-1 pr-1 pb-4">
-    <div class="input-group-prepend">
-      <select class="btn btn-outline-secondary dropdown-toggle" [(ngModel)]="source">
-        <!-- <option value="">Seleziona eCommerce</option> -->
-        <option value="amazon.it.All">Amazon.it - All</option>
-        <option value="amazon.it.Amazon">Amazon.it - Only Amazon</option>
-        <option value="" disabled="">-----</option>
-        <option value="ebay.it">eBay.it</option>
-      </select>     
-    </div>
-    <input type="text" placeholder="Inserisci il link del prodotto" class="form-control" [(ngModel)]="query">
-    <div class="input-group-append">
-      <button (click)="findProduct()" class="btn btn-outline-secondary" type="button">Cerca</button>
-    </div>
-  </div>
-</div>
 <!--MODALE PROFILO UTENTE-->
 <div class="modal fade" id="modal_settings" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true">
@@ -51,19 +36,27 @@
         </button>
       </div>
       <div class="modal-body ml-2 mr-2 mb-2">
-          <nav>
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-              <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" (click)="changeSetting('data')"><i class="fa fa-futbol-o" aria-hidden="true"></i>Dati utente</a>
-              <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false" (click)="changeSetting('preferences')"><i class="fa fa-music" aria-hidden="true"></i>Preferenze</a>
-            </div>
-          </nav>
-          <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade active show" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><app-form-user [type]=setting_type [user]=user [modal_type]=modal_type></app-form-user></div>
-            <div  class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><app-form-user [type]=setting_type [user]=user [modal_type]=modal_type></app-form-user></div>
-          </div>        
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+              aria-controls="nav-profile" aria-selected="false" (click)="changeSetting('data')"><i
+                class="fa fa-futbol-o" aria-hidden="true"></i>Dati utente</a>
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+              aria-controls="nav-contact" aria-selected="false" (click)="changeSetting('preferences')"><i
+                class="fa fa-music" aria-hidden="true"></i>Preferenze</a>
+          </div>
+        </nav>
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade active show" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-            <!-- <app-data-user></app-data-user>-->
+            <app-form-user [type]=setting_type [user]=user [modal_type]=modal_type></app-form-user>
+          </div>
+          <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+            <app-form-user [type]=setting_type [user]=user [modal_type]=modal_type></app-form-user>
+          </div>
+        </div>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade active show" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <app-data-user></app-data-user>
           </div>
           <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"></div>
         </div>
@@ -91,33 +84,33 @@
       </div>
     </div>
   </div>
-</div> 
+</div>
 
 <!--Modal user-->
 <div class="modal fade" id="modal_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header text-center">
-                <h5 class="modal-title" id="exampleModalLongTitle">Effettua il login</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body ml-5 mr-5 mb-2">
-                <div class="alert alert-warning">Accedi o registrati per seguire e tracciare i prezzi dei prodotti<br>
-                    <div *ngIf="showSignUp == false" class="mt-1">Non hai un account? <a routerLink=""
-                            (click)="openSignup()">Registrati.</a></div>
-                    <div *ngIf="showSignUp == true" class="mt-1">Hai già un account? <a routerLink=""
-                            (click)="openSignup()">Effettua il login.</a></div>
-                </div>
-                <div *ngIf="showSignUp == false">
-                    <app-login></app-login>
-                </div>
-                <div *ngIf="showSignUp== true">
-                    <app-form-user></app-form-user>
-                </div>
-            </div>
+  aria-hidden="true">
+  <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h5 class="modal-title" id="exampleModalLongTitle">Effettua il login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body ml-5 mr-5 mb-2">
+        <div class="alert alert-warning">Accedi o registrati per seguire e tracciare i prezzi dei prodotti<br>
+          <div *ngIf="showSignUp == false" class="mt-1">Non hai un account? <a routerLink=""
+              (click)="openSignup()">Registrati.</a></div>
+          <div *ngIf="showSignUp == true" class="mt-1">Hai già un account? <a routerLink=""
+              (click)="openSignup()">Effettua il login.</a></div>
         </div>
+        <div *ngIf="showSignUp == false">
+          <app-login></app-login>
+        </div>
+        <div *ngIf="showSignUp== true">
+          <app-form-user></app-form-user>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

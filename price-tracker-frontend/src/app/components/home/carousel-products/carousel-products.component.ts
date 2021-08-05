@@ -6,21 +6,20 @@ import { ProductsService } from 'src/app/_service/products.service';
   templateUrl: './carousel-products.component.html',
   styleUrls: ['./carousel-products.component.css']
 })
-export class CarouselProductsComponent implements OnInit {
-  bestProducts: any;
+export class CarouselProductsComponent implements OnInit {  
+  bestProducts: any[] = [];
   _cols = 4;
 
-  constructor(private product: ProductsService) { 
-    this.bestProducts = this.getBestProduct();
+  constructor(private product: ProductsService) {     
   }
 
   ngOnInit(): void {
+    this.getBestProduct();
   }
 
   getBestProduct() {
     this.product.getBestProducts().subscribe(data => {
-      this.bestProducts = data;
-      console.log(this.bestProducts);
+      this.bestProducts = data;      
     });  
   }
 

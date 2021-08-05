@@ -21,7 +21,7 @@ import com.example.demo.repository.UserRepository;
 import com.example.demo.repository.WishListRepository;
 
 @RestController
-@RequestMapping("/api/test")
+@RequestMapping("/api/product")
 @CrossOrigin(origins = "*")
 public class ProductController {
 
@@ -38,7 +38,7 @@ public class ProductController {
 		this.productRepository = productRepository;
 	}
 
-	@PostMapping("/product")
+	@PostMapping
 	public ResponseEntity<MessageResponse> addProduct(@RequestBody Map<String, String> payload) {
 
 		Product product;

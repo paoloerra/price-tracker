@@ -48,9 +48,7 @@ export class NavbarComponent implements OnInit {
     this.setting_type = setting;
   }
 
-  findProduct() {
-    this.productEvent.emit({ query: this.query, source: this.source });
-  }
+
 
   openSignup() {
     this.showSignUp = !this.showSignUp;
