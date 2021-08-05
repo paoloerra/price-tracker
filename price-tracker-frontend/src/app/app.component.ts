@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { ProductsService } from './_service/products.service';
 import { NgxSpinnerService } from "ngx-spinner";
 import { TokenStorageService } from './_service/token-storage.service';
@@ -50,7 +50,7 @@ export class AppComponent {
       console.log("Utente:" +user);
     }
   }
-
+  
   logout() {
     this.tokenStorageService.signOut();
     window.location.reload();

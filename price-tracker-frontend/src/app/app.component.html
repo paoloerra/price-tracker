@@ -1,4 +1,4 @@
-<app-navbar (productEvent)="getProduct($event)"></app-navbar>
+<app-navbar [msgFromParent]='isLoggedIn' (logoutEvent)="logout()" (productEvent)="getProduct($event)"></app-navbar>
 <app-carousel></app-carousel>
 <app-carousel-products></app-carousel-products>
 <app-grid-product [products]=products [user]=user (addProductEvent)="addProduct($event)"></app-grid-product>
