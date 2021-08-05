@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <hr>
+  <h2 style="font-weight: bold;" class="text-center">La tua lista dei desideri</h2>
+  <hr>
+  
+  <div class="row mb-3">
+    <div class="col-lg-3 col-sm-12 mt-3 " *ngFor="let wish of wishList">
+        <div class="card">
+            <img src="{{wish.product.image_url}}" style="height: 200px;" class="card-img-top p-3 mt-4 mx-auto" alt="...">
+            <div class="card-body">
+                <h5 class="card-title text-truncate">{{wish.product.name }}</h5>
+                <div class="float-right">
+                    <h6>{{wish.product.price}}€</h6>
+                </div>
+                <div class="float-left">
+                    <h6>Soglia: {{wish.threshold}}€</h6>
+                </div><br>
+                <hr>
+                <div class="text-center">
+                    <a href="{{wish.product.link}}">Link</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+</div>

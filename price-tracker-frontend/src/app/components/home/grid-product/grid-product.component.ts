@@ -11,7 +11,7 @@ import { User } from 'src/app/model/user';
 export class GridProductComponent implements OnInit {
 
   showSignUp: Boolean = false;
-  product!: Product;  
+  public product!: Product;  
   threshold!: Number;
 
   @Input('products')

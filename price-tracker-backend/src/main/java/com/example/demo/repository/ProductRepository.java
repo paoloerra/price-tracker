@@ -11,7 +11,4 @@ import com.example.demo.models.Product;
 public interface ProductRepository extends CrudRepository<Product, String>{
 	Boolean existsByStoreId(String store_id);
 	Optional<Product> findByStoreId(String store_id);
-	
-//	@Query(value= "SELECT p.store_id FROM product p WHERE p.store_id=?1 ", nativeQuery = true)
-//    public Boolean existsByStoreId(@Param("store_id") String store_id)
 }

@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { ProductsService } from './_service/products.service';
-import { NgxSpinnerService } from "ngx-spinner";
 import { TokenStorageService } from './_service/token-storage.service';
 import { User } from './model/user';
 
@@ -13,32 +11,14 @@ import { User } from './model/user';
 export class AppComponent {
   title = 'price-tracker-frontend-bootstrap';
   query!: String;
-  source!: String;
-  products: any;
+  source!: String;  
   user!: User;
 
   isLoggedIn = false;
 
-  constructor(private product: ProductsService, private spinner: NgxSpinnerService, private tokenStorageService: TokenStorageService) { 
+  constructor(private tokenStorageService: TokenStorageService) { 
     this.user = new User(1, "", "", "guest", 0);
   }  
-
-  getProduct($event: any) {
-    this.spinner.show();
-    this.product.getProducts($event.query, $event.source).subscribe(data => {
-      this.spinner.hide()
-      this.products = data;
-      console.log(this.products);
-    });
-  }
-
-  addProduct($event: any) {
-    this.spinner.show();
-    this.product.addProduct($event.product, $event.user, $event.threshold).subscribe(data => {
-      this.spinner.hide();
-      console.log(data);
-    });
-  }
 
   ngOnInit() {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
