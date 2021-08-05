@@ -44,7 +44,7 @@ export class FormUserComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.user = new User(-1, "", "", "", -1);
+    this.user = new User(-1, "wwww", "xxx", "guest", -1);
     this.signupForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
       email: ['', [Validators.required, Validators.email]],
