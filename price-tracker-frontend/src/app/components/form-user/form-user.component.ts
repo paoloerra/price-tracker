@@ -15,6 +15,12 @@ export class FormUserComponent implements OnInit {
   @Input()
   type: String = "data";
 
+  @Input()
+  user: any;
+
+  @Input()
+  modal_type: String =  "register";
+
   show: boolean = false;
   //Form dati utente
   signupForm!: FormGroup;
@@ -29,11 +35,13 @@ export class FormUserComponent implements OnInit {
   //Controllo registrazione
   control_signup: boolean = false;
 
-  user!: User;
+  constructor(private formBuilder: FormBuilder, private authService: AuthService) { 
+  }
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private dataStorage: TokenStorageService) { 
-    this.showUserData();
-   }
+  ngOnChanges() {
+    console.log(this.user);
+  }
+
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
@@ -98,11 +106,5 @@ export class FormUserComponent implements OnInit {
     console.log(this.signupForm.value);
     this.type = "preferences";
   }
-
-  showUserData() {
-    this.user = this.dataStorage.getUser();
-    console.log(this.user, "checked");
-  }
-
 
 }

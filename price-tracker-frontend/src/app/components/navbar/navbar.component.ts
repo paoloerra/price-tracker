@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { User } from 'src/app/model/user';
+import { TokenStorageService } from 'src/app/_service/token-storage.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,22 +12,18 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class NavbarComponent implements OnInit {
 
   showSignUp: Boolean = false;
-
   query!: String;
-
   source: String = "amazon.it.All";
- 
   setting_type: String = "data";
-
   title_modal = "Effettua il login";
-
   profile: String = "Profilo";
 
-  constructor(private spinner: NgxSpinnerService) { }
-
+  settings: String = "Settings";
+  
+  modal_type = "profile";
+  
   @Input()
   msgFromParent: any;
-  
 
   @Output()
   productEvent = new EventEmitter<{ query: String, source: String }>();
@@ -33,10 +31,14 @@ export class NavbarComponent implements OnInit {
   @Output()
   logoutEvent = new EventEmitter<any>();
 
+  user!: any;
+
+  constructor(private spinner: NgxSpinnerService, private dataStorage: TokenStorageService) { 
+    this.user = JSON.parse(dataStorage.getUser());
+  }
+
   logout(): any {
-
     this.logoutEvent.emit();
-
   }
 
   ngOnInit(): void {
