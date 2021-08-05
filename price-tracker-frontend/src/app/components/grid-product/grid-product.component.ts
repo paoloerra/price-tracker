@@ -14,6 +14,8 @@ export class GridProductComponent implements OnInit {
   product!: Product;  
   threshold!: Number;
 
+  modal_type: String = "register";
+
   @Input('products')
   data!:any;
 
@@ -39,6 +41,7 @@ export class GridProductComponent implements OnInit {
     }
     else {
       this.title_modal = "Effettua la registrazione";
+      this.modal_type = "register";
     }
   }
 

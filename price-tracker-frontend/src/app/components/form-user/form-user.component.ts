@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { User } from 'src/app/model/user';
 import { AuthService } from 'src/app/_service/auth.service';
+import { TokenStorageService } from 'src/app/_service/token-storage.service';
 
 @Component({
   selector: 'app-form-user',
@@ -12,6 +14,12 @@ export class FormUserComponent implements OnInit {
   //Per la visualizzazione dei form
   @Input()
   type: String = "data";
+
+  @Input()
+  user: User = new User(-1, "", "", "", -1);
+
+  @Input()
+  modal_type: String =  "register";
 
   show: boolean = false;
   //Form dati utente
@@ -27,10 +35,16 @@ export class FormUserComponent implements OnInit {
   //Controllo registrazione
   control_signup: boolean = false;
 
+  constructor(private formBuilder: FormBuilder, private authService: AuthService) { 
+  }
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) { }
+  ngOnChanges() {
+    console.log(this.user);
+  }
+
 
   ngOnInit(): void {
+    this.user = new User(-1, "wwww", "xxx", "guest", -1);
     this.signupForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
       email: ['', [Validators.required, Validators.email]],
@@ -93,4 +107,5 @@ export class FormUserComponent implements OnInit {
     console.log(this.signupForm.value);
     this.type = "preferences";
   }
+
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/_service/auth.service';
 import { TokenStorageService } from 'src/app/_service/token-storage.service';
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   payLoad = new Map();
   
   email! : string;
-
+  
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
 
         this.spinner.hide();
 
-        this.errorMessage = "Login non andato a buon fine";
+        this.errorMessage = "Login non andato a buon fine, riprova con le giuste credenziali";
         this.isLoginFailed = true;
       }
     );
