@@ -15,7 +15,8 @@
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item"><b class="pr-4">Visualizza la tua lista</b></li>
-      <li *ngIf="msgFromParent == false"class="nav-item" data-toggle="modal" data-target="#modal_settings"><b class="pr-4">Login</b></li>
+      <li *ngIf="msgFromParent == false"class="nav-item" data-toggle="modal" data-target="#modal_user"><b class="pr-4">Login</b></li>
+      <li *ngIf="msgFromParent" class="nav-item" data-toggle="modal" data-target="#modal_settings"><b class="pr-4">Profilo Utente</b></li>
       <li *ngIf="msgFromParent" class="nav-item" data-toggle="modal" data-target="#modal_logout"><b class="pr-4">Logout</b></li>
     </ul>
   </div>
@@ -38,13 +39,13 @@
     </div>
   </div>
 </div>
-<!--MODALE-->
+<!--MODALE PROFILO UTENTE-->
 <div class="modal fade" id="modal_settings" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true">
   <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h5 class="modal-title" id="exampleModalLongTitle">Impostazioni utente</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Profilo Utente</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -91,3 +92,32 @@
     </div>
   </div>
 </div> 
+
+<!--Modal user-->
+<div class="modal fade" id="modal_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title" id="exampleModalLongTitle">Effettua il login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body ml-5 mr-5 mb-2">
+                <div class="alert alert-warning">Accedi o registrati per seguire e tracciare i prezzi dei prodotti<br>
+                    <div *ngIf="showSignUp == false" class="mt-1">Non hai un account? <a routerLink=""
+                            (click)="openSignup()">Registrati.</a></div>
+                    <div *ngIf="showSignUp == true" class="mt-1">Hai già un account? <a routerLink=""
+                            (click)="openSignup()">Effettua il login.</a></div>
+                </div>
+                <div *ngIf="showSignUp == false">
+                    <app-login></app-login>
+                </div>
+                <div *ngIf="showSignUp== true">
+                    <app-form-user></app-form-user>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

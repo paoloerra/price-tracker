@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { User } from 'src/app/model/user';
 import { AuthService } from 'src/app/_service/auth.service';
+import { TokenStorageService } from 'src/app/_service/token-storage.service';
 
 @Component({
   selector: 'app-form-user',
@@ -27,8 +29,11 @@ export class FormUserComponent implements OnInit {
   //Controllo registrazione
   control_signup: boolean = false;
 
+  user!: User;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private dataStorage: TokenStorageService) { 
+    this.showUserData();
+   }
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
@@ -93,4 +98,11 @@ export class FormUserComponent implements OnInit {
     console.log(this.signupForm.value);
     this.type = "preferences";
   }
+
+  showUserData() {
+    this.user = this.dataStorage.getUser();
+    console.log(this.user, "checked");
+  }
+
+
 }

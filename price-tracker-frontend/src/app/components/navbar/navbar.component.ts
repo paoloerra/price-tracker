@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-navbar',
@@ -7,13 +8,20 @@ import { Output, EventEmitter } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+
+  showSignUp: Boolean = false;
+
+  query!: String;
+
+  source: String = "amazon.it.All";
  
   setting_type: String = "data";
 
-  constructor() { }
+  title_modal = "Effettua il login";
 
-  query!: String;
-  source: String = "amazon.it.All";
+  profile: String = "Profilo";
+
+  constructor(private spinner: NgxSpinnerService) { }
 
   @Input()
   msgFromParent: any;
@@ -40,6 +48,16 @@ export class NavbarComponent implements OnInit {
 
   findProduct() {
     this.productEvent.emit({ query: this.query, source: this.source });
+  }
+
+  openSignup() {
+    this.showSignUp = !this.showSignUp;
+    if(this.showSignUp == false) {
+      this.title_modal = "Effettua il login";
+    }
+    else {
+      this.title_modal = "Effettua la registrazione";
+    }
   }
 
 }

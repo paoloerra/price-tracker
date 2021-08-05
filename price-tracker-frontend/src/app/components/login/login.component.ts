@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
 
         this.spinner.hide();
 
-        this.errorMessage = "Login non andato a buon fine";
+        this.errorMessage = "Login non andato a buon fine, riprova con le giuste credenziali";
         this.isLoginFailed = true;
       }
     );
