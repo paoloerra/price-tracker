@@ -17,9 +17,8 @@
                     </div><br>
                     <hr>
                     <div class="text-center">
-                        <div (click)="product=d" style="width: 100%;" class="my-btn mt-3" data-toggle="modal"
-                            data-target="#modal_user">
-                            Segui</div>
+                        <div (click)="product=d" style="width: 100%;" class="my-btn mt-3" data-toggle="modal" data-target="#modal_user"  *ngIf="mode == null">Segui</div>
+                        <div (click)="product=d" style="width: 100%;" class="my-btn mt-3" data-toggle="modal" data-target="#modal_addProduct" *ngIf="mode != null">Segui</div>
                     </div>
                 </div>
             </div>
@@ -70,10 +69,11 @@
             <div class="modal-body ml-5 mr-5 mb-2">
                 <img class="card-img-top" src="{{product.image}}" alt="Card image cap">
                 <div class="card-body">
-                  <h5 class="card-title">Soglia di prezzo</h5>
-                  <p class="card-text">Appena l'articolo scenderà sottosoglia verrai avvisato</p>
-                  <input type="text" class="form-control" name="treshold" placeholder="Inserisci una soglia di prezzo" [(ngModel)]="threshold" > 
-                  <button class="btn btn-primary" (click)="addProduct(product)">Aggiungi</button>
+                    <h5 class="card-title">Soglia di prezzo</h5>
+                    <p class="card-text">Appena l'articolo scenderà sottosoglia verrai avvisato</p>
+                    <input type="text" class="form-control" name="treshold" placeholder="Inserisci una soglia di prezzo"
+                        [(ngModel)]="threshold">
+                    <button class="btn btn-primary" (click)="addProduct(product)">Aggiungi</button>
                 </div>
             </div>
         </div>

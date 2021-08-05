@@ -15,15 +15,16 @@ export class AppComponent {
   query!: String;
   source!: String;
   products: any;
-  user!: User;
+  user: any;
 
   bestProducts: any;
 
   isLoggedIn = false;
 
-  constructor(private product: ProductsService, private spinner: NgxSpinnerService, private tokenStorageService: TokenStorageService) { 
-    this.user = new User(1, "", "", "guest", 0);
-  }  
+  constructor(private product: ProductsService, private spinner: NgxSpinnerService, private tokenStorageService: TokenStorageService) {
+    this.user = JSON.parse(this.tokenStorageService.getUser())
+
+   }  
 
   getProduct($event: any) {
     this.spinner.show();
