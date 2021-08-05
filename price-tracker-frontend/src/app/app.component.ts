@@ -17,6 +17,8 @@ export class AppComponent {
   products: any;
   user!: User;
 
+  bestProducts: any;
+
   isLoggedIn = false;
 
   constructor(private product: ProductsService, private spinner: NgxSpinnerService, private tokenStorageService: TokenStorageService) { 

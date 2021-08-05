@@ -21,6 +21,16 @@ export class ProductsService {
     });
   }
 
+  getBestProducts(): Observable<any> {
+    return this.http.get<any>('https://www.whenitdrop.com/api/products/discounted', {
+      params: {
+        productsQuantity: 12,
+        iteration: 12,
+        slice: 1
+      }
+    });
+  }
+
   addProduct(product: Product, user: User, threshold: Number) {
     return this.http.post<any>('http://localhost:8080/api/test/product', {
       id: product.storeId,

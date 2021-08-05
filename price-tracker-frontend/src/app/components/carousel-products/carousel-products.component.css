@@ -1,0 +1,47 @@
+.card {
+    border-radius: 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#red-price {
+    -webkit-text-decoration-line: line-through; /* Safari */
+    text-decoration-line: line-through; 
+    color: red;
+}
+
+hr {
+    background-color:  white;
+    height: 2px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.card-img-top {
+    width: 50%;
+    height: vw;
+    object-fit: fill;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  background-size: 100%, 100%;
+  background-image: none;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 40px;
+  color: black;
+  font-weight: bold;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 40px;
+  color: black;
+  font-weight: bold;
+}

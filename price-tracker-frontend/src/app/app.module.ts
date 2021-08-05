@@ -13,6 +13,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { CarouselProductsComponent } from './components/carousel-products/carousel-products.component';
+import { TruncateTextPipe } from './_pipe/truncate-text.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     NavbarComponent,
     FooterComponent,
     CarouselComponent,
+    CarouselProductsComponent,
+    TruncateTextPipe,
   ],
   imports: [
     BrowserModule,
